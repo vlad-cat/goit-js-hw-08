@@ -30,13 +30,28 @@ function onPageLoad(form) {
     textarea.value = parsedFormValue.message;
   }
 }
+
 function onFormSubmit(event) {
   event.preventDefault();
   const data = {
     email: event.currentTarget.elements.email.value,
     message: event.currentTarget.elements.message.value,
   };
+  if (!data.email.length || !data.message.trim().length) {
+    alert('Заповніть усі поля');
+    return;
+  }
   console.log(data);
   event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
+// function onFormSubmit(event) {
+//   event.preventDefault();
+//   const data = {
+//     email: event.currentTarget.elements.email.value,
+//     message: event.currentTarget.elements.message.value,
+//   };
+//   console.log(data);
+//   event.currentTarget.reset();
+//   localStorage.removeItem(STORAGE_KEY);
+// }
